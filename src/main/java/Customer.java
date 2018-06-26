@@ -24,6 +24,10 @@ public class Customer extends Person {
     }
 
     public boolean canAfford(Vehicle vehicle){
-        if ()
+        if (this.wallet >= vehicle.getPrice()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

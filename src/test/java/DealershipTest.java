@@ -74,4 +74,15 @@ public class DealershipTest {
         assertEquals(101000, dealership.getTill().getBalance(), 0.01);
         assertEquals(1000, customer.getWallet(), 0.01);
     }
+
+    @Test
+    public void cannotSellVan() {
+        dealership.sellVehicle(customer, vehicle3);
+        assertEquals(0, customer.getVehicles().size());
+    }
+
+    @Test
+    public void canGetAvailableVehicles() {
+        assertEquals(2, dealership.availableVehicles().size());
+    }
 }

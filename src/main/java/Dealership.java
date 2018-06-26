@@ -36,10 +36,22 @@ public class Dealership {
     }
 
     public void sellVehicle(Customer customer, Vehicle vehicle){
-        if (customer.canAfford(vehicle)) {
-            customer.buyVehicle(vehicle);
-            till.setBalance(till.getBalance() + vehicle.getPrice());
-            vehicles.remove(vehicle);
+        if (((IWheels) vehicle).canDrive()) {
+            if (customer.canAfford(vehicle)) {
+                customer.buyVehicle(vehicle);
+                till.setBalance(till.getBalance() + vehicle.getPrice());
+                vehicles.remove(vehicle);
+                }
         }
+    }
+
+    public ArrayList<IWheels> availableVehicles(){
+        ArrayList<IWheels> available = new ArrayList<IWheels>();
+        for (Vehicle vehicle : vehicles){
+            if (((IWheels) vehicle).canDrive()){
+                available.add((IWheels) vehicle);
+            }
+        }
+        return available;
     }
 }
